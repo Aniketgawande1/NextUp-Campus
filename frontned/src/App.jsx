@@ -8,6 +8,7 @@ import Testimonials from "./components/Testimonials.jsx";
 import Footer from "./components/Footer.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ContactPage from "./components/Contact.jsx";
 
 const App = () => {
   React.useEffect(() => {
@@ -27,6 +28,7 @@ const App = () => {
       <Services />
       <Banner />
       <AppStore />
+      <ContactPage />
       <Testimonials />
       <Footer />
     </div>
