@@ -1,32 +1,29 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const connectDB = require('./config/db');
-const eventRoutes = require('./routes/eventRoutes');
-const { errorHandler } = require('./middleware/errorMiddleware');
-
-dotenv.config();
-const app = express();
-
-// Connect to MongoDB
-connectDB();
-
-// Middleware
-app.use(express.json());
-app.use(cors());
-
-// ✅ Root Route
-app.get('/', (req, res) => {
-  res.send('API is running...');
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config({
+    path: "./.env",
 });
 
-// Routes
-app.use('/api/events', eventRoutes);
+const app = express();
 
-// Error Handling Middleware
-app.use(errorHandler);
+app.use(cors());
+app.use(express.json());
+app.set('trust proxy', true); 
 
-// Port Configuration
-const PORT = process.env.PORT || 5000;
+import userRouter from "./routes/authRoutes.js";
+// import todoRouter from "./Routes/todo.route.js"; 
 
-app.listen(PORT, console.log(`🚀 Server running on port ${PORT}`));
+app.use("/api/v1/user", userRouter);
+app.use("/api/v2/todo", todoRouter); 
+
+const port = process.env.PORT;
+
+mongoose
+    .connect(process.env.MONGO_URL)
+    .then(() => app.listen(port))
+    .then(() =>
+        console.log(`⚙️  Server is running and connected to db at port ${port} :)`)
+    )
+    .catch((err) => console.log(`${err} is error`));
