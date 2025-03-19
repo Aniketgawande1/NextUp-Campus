@@ -9,6 +9,7 @@ import Footer from "./components/Footer.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ContactPage from "./components/Contact.jsx";
+import Dashboard from "./components/Dashboard.jsx";
 
 const App = () => {
   React.useEffect(() => {
@@ -28,6 +29,7 @@ const App = () => {
       <Services />
       <Banner />
       <AppStore />
+      <Dashboard />
       <ContactPage />
       <Testimonials />
       <Footer />

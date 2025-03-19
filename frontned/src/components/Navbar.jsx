@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { FaCalendarAlt, FaBars, FaTimes } from "react-icons/fa";
 
+
 const Menu = [
   { id: 1, name: "Home", link: "/#" },
   { id: 2, name: "Events", link: "/#services" },
   { id: 3, name: "About", link: "/#about" },
-  { id: 4, name: "Schedule", link: "/#schedule" },
+  { id: 4, name: "Dashboard", link: "/#dashboard" },
   { id: 5, name: "Contact Us", link: "/#contactus" },
 ];
 
