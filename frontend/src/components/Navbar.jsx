@@ -6,7 +6,7 @@ const Menu = [
   { id: 2, name: "Events", link: "/#services" },
   { id: 3, name: "About", link: "/#about" },
   { id: 4, name: "Schedule", link: "/#schedule" },
-  { id: 5, name: "Contact", link: "/#contact" },
+  { id: 5, name: "Contact Us", link: "/#contactus" },
 ];
 
 const Navbar = () => {
