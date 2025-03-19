@@ -15,6 +15,7 @@ const FooterLinks = [
     title: "About",
     link: "/#about",
   },
+  
   {
     title: "Contact",
     link: "/#contact",
