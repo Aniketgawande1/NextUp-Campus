@@ -1,32 +1,42 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const connectDB = require('./config/db');
-const eventRoutes = require('./routes/eventRoutes');
-const { errorHandler } = require('./middleware/errorMiddleware');
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import authRoutes from "./Routes/auth.route.js";
+// import todoRoutes from "./Routes/todo.route.js";
 
+// Load environment variables
 dotenv.config();
-const app = express();
 
-// Connect to MongoDB
+// Connect to MongoDB directly here
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("✅ MongoDB connected successfully");
+  } catch (error) {
+    console.error(`❌ Error: ${error.message}`);
+    process.exit(1);
+  }
+};
+
 connectDB();
+
+// Initialize Express
+const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
-
-// ✅ Root Route
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
 
 // Routes
-app.use('/api/events', eventRoutes);
+app.use("/api/auth", authRoutes);
+// app.use("/api/todo", todoRoutes);
 
-// Error Handling Middleware
-app.use(errorHandler);
+// Define PORT
+const PORT = process.env.PORT || 5500;
 
-// Port Configuration
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, console.log(`🚀 Server running on port ${PORT}`));
+// Start Server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
