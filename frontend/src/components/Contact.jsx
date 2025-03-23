@@ -7,9 +7,9 @@ const ContactPage = () => {
     subject: 'general',
     message: ''
   });
-  
+
   const [submitted, setSubmitted] = useState(false);
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -17,12 +17,12 @@ const ContactPage = () => {
       [name]: value
     }));
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     setSubmitted(true);
-    
+
     // Reset form after submission
     setTimeout(() => {
       setFormData({
@@ -34,9 +34,9 @@ const ContactPage = () => {
       setSubmitted(false);
     }, 3000);
   };
-  
+
   return (
-    <div id="contactus" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div  className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <main className="py-8">
         <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
         <p className="text-gray-400 mb-8">Have questions about campus events? Reach out to our team!</p>
@@ -88,55 +88,63 @@ const ContactPage = () => {
             </div>
 
             <div className="flex mt-8 space-x-4">
-              <a href="#" className="w-10 h-10 bg-gray-700 hover:bg-purple-500 rounded-full flex items-center justify-center transition-colors">FB</a>
-              <a href="#" className="w-10 h-10 bg-gray-700 hover:bg-purple-500 rounded-full flex items-center justify-center transition-colors">IG</a>
-              <a href="#" className="w-10 h-10 bg-gray-700 hover:bg-purple-500 rounded-full flex items-center justify-center transition-colors">TW</a>
-              <a href="#" className="w-10 h-10 bg-gray-700 hover:bg-purple-500 rounded-full flex items-center justify-center transition-colors">YT</a>
+              {["FB", "IG", "TW", "YT"].map((platform) => (
+                <div
+                  key={platform}
+                  className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white cursor-default select-none"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                >
+                  {platform}
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Contact Form Section */}
           <div className="bg-gray-800 rounded-lg p-6 md:p-8 flex-2">
             <h2 className="text-2xl font-bold mb-4 text-purple-500">Send a Message</h2>
-            
+
             {submitted && (
               <div className="bg-green-800 text-white p-4 rounded-md mb-4">
                 Thank you! Your message has been sent successfully.
               </div>
             )}
-            
+
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="name" className="block mb-2 font-medium">Name</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required 
+                  required
                   className="w-full p-3 bg-gray-900 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
 
               <div className="mb-4">
                 <label htmlFor="email" className="block mb-2 font-medium">Email</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required 
+                  required
                   className="w-full p-3 bg-gray-900 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
 
               <div className="mb-4">
                 <label htmlFor="subject" className="block mb-2 font-medium">Subject</label>
-                <select 
-                  id="subject" 
-                  name="subject" 
+                <select
+                  id="subject"
+                  name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   className="w-full p-3 bg-gray-900 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -151,19 +159,19 @@ const ContactPage = () => {
 
               <div className="mb-6">
                 <label htmlFor="message" className="block mb-2 font-medium">Message</label>
-                <textarea 
-                  id="message" 
-                  name="message" 
+                <textarea
+                  id="message"
+                  name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required 
+                  required
                   rows="6"
                   className="w-full p-3 bg-gray-900 border border-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                 ></textarea>
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="bg-purple-500 hover:bg-purple-600 text-white py-3 px-6 rounded-md font-medium transition-colors"
               >
                 Send Message

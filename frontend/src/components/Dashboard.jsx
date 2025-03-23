@@ -855,7 +855,7 @@ const Dashboard = () => {
       growth: 10, 
       category: 'tech',
       description: 'Present your startup ideas to investors.',
-      image: 'https://techlekh.com/wp-content/uploads/2024/03/tech-meetup.jpg'
+      image: 'https://media.licdn.com/dms/image/v2/D5612AQHZTVw0f7_ZdA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1710657029824?e=2147483647&v=beta&t=GSyaGJrQJmSf77RBAV28uhSH1t6HGDtftZDeprZ_iSE'
     },
     { 
       id: 8, 
@@ -867,7 +867,7 @@ const Dashboard = () => {
       growth: 40, 
       category: 'academic',
       description: 'Deep dive into modern physics theories.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdLSzI30lGO348O-rELCh281-g1oCaaTpQDA-YdrcxIrxuF6kwue-pD9pci3fIZibxg7I&usqp=CAU'
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSoY7ZrSUSSqL-n7DsjLAZ_1oln9_HG1H4neYRX1insaZ45ClgpfcH0p-x0PiuljPY8ok&usqp=CAU'
     },
     { 
       id: 9, 
@@ -879,7 +879,7 @@ const Dashboard = () => {
       growth: 35, 
       category: 'cultural',
       description: 'Showcase your artistic creativity.',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtz2lcitXMr5fjY8WlXVsLvPk2mXjtKeLb4Q&s'
+      image: 'https://i0.wp.com/chinha.in/wp-content/uploads/2023/10/IMG_20231003_154237-Copy.jpg?fit=2086%2C845&ssl=1'
     }
   ];
 

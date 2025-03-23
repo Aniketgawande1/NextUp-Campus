@@ -1,24 +1,40 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import HeroPng from "../assets/coffee2.png";
 import { FaCalendarCheck, FaUsers } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 
 const Hero = () => {
+  const navigate = useNavigate(); // Navigation hook
+
+  const handleRegisterClick = () => {
+    navigate("/register"); // Redirect to register page
+  };
+
+  // Static background pattern positions (to avoid rerender issues)
+  const backgroundDots = [
+    { top: "10%", left: "20%" },
+    { top: "30%", left: "80%" },
+    { top: "50%", left: "60%" },
+    { top: "70%", left: "10%" },
+    { top: "85%", left: "50%" },
+  ];
+
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-b from-gray-900 to-gray-800 text-white relative overflow-hidden">
       
-      {/* Background pattern */}
+      {/* Background pattern (static positions) */}
       <div className="absolute inset-0 opacity-5">
-        {[...Array(20)].map((_, i) => (
+        {backgroundDots.map((dot, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-blue-500"
             style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 8 + 2}px`,
-              height: `${Math.random() * 8 + 2}px`,
-              opacity: Math.random() * 0.5 + 0.3,
+              top: dot.top,
+              left: dot.left,
+              width: "8px",
+              height: "8px",
+              opacity: 0.4,
             }}
           ></div>
         ))}
@@ -50,7 +66,10 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
-              <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-8 rounded-lg flex items-center gap-2 font-medium hover:shadow-lg transition duration-300">
+              <button
+                onClick={handleRegisterClick}
+                className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-8 rounded-lg flex items-center gap-2 font-medium hover:shadow-lg transition duration-300"
+              >
                 Register Now
                 <FaCalendarCheck />
               </button>
@@ -78,7 +97,12 @@ const Hero = () => {
           {/* Image Section */}
           <div className="relative flex justify-center items-center">
             <div className="absolute w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-3xl"></div>
-            <img src={HeroPng} alt="Event Image" className="w-[300px] sm:w-[400px] relative z-10" />
+            <img
+              src={HeroPng}
+              alt="Event Image"
+              loading="lazy" // Lazy loading for better performance
+              className="w-[300px] sm:w-[400px] relative z-10"
+            />
 
             {/* Floating Elements */}
             <div className="absolute top-10 left-10 sm:top-16 sm:left-16 bg-gray-800/80 border border-gray-700 p-4 rounded-xl shadow-xl">

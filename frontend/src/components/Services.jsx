@@ -33,7 +33,7 @@ const ServicesData = [
 const Services = () => {
   return (
     <>
-      <span id="services"></span>
+     
       <div className="py-16 bg-gray-900">
         <div className="container">
           {/* Heading section */}
